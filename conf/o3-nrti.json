@@ -1,0 +1,9 @@
+{
+    "s3": {
+	"bucket_name": "tropomi-o3-nrti",
+	"obj_name_start": "S5P_NRTI_L2__O3_____{date}T{time}"
+    },
+    "local": {
+	"path": "/home/perttula/ACSAF/tropomi_data/S3_o3-nrti"
+    }
+}
