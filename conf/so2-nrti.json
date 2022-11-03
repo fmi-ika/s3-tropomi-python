@@ -4,6 +4,6 @@
 	"obj_name_start": "S5P_NRTI_L2__SO2____{date}T{time}"
     },
     "local": {
-	"path": "/home/perttula/ACSAF/tropomi_data/S3_so2-nrti"
+	"path": "/kat/data/tropomi/S3_so2-nrti"
     }
 }
