@@ -29,20 +29,25 @@ def create_s3_client(s3_config_file):
 
 def get_files_containing_pattern(s3, bucket_name, pattern, outpath):
     """ Download S3 objects containing given pattern.
-                                                                                                  
+                                      
     Keyword arguments:                                                                                
     s3 -- boto3 S3 client
     bucket_name -- S3 bucket name where to search for files
     pattern -- pattern used for searching matching files
     outpath -- local directory where matching files are downloaded to
 
-    """    
-    for key in s3.list_objects(Bucket=bucket_name)['Contents']:
-        if re.search(pattern, key['Key']):
-            print("Downloading file: ", key['Key'])
-            local_file = f"{outpath}/{key['Key']}"
-            s3.download_file(bucket_name, key['Key'], local_file)
-        
+    """
+    
+    paginator = s3.get_paginator('list_objects_v2')
+    pages = paginator.paginate(Bucket=bucket_name)
+
+    for page in pages:
+        for key in page['Contents']:
+            if re.search(pattern, key['Key']):
+                print("Downloading file: ", key['Key'])
+                local_file = f"{outpath}/{key['Key']}"
+                s3.download_file(bucket_name, key['Key'], local_file)      
+            
 
 def main():
 
@@ -56,11 +61,11 @@ def main():
     bucket_name = variable_config["s3"]["bucket_name"]
 
     time = ""
-    pattern = obj_name_start.format(date = options.date, time = time)
+    pattern = variable_config["s3"]["obj_name_start"].format(date = options.date, time = time)
     
     # Search files including date and download
     outpath = variable_config["local"]["path"]
-    download_files_containing_pattern(s3, bucket_name, pattern, outpath)
+    get_files_containing_pattern(s3, bucket_name, pattern, outpath)
 
 
 if __name__ == '__main__':                                                      
@@ -76,7 +81,7 @@ if __name__ == '__main__':
                         help = 'Tropomi variable file to download. Options: no2, so2, co, o3, no2-nrti, so2-nrti, co-nrti, o3-nrti')
     parser.add_argument('--date',
                         type = str,                                             
-                        default = '20221025',                               
+                        default = '20221103',                               
                         help = 'Date to download from S3.')
     options = parser.parse_args()                                               
     main()
