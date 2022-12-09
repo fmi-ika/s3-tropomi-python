@@ -1,10 +1,14 @@
 {
     "s3": {
-	"bucket_name": "tropomi-no2-nrti-l3"
+	"day": {
+	    "bucket_name": "tropomi-no2-nrti-l3"
+	}
     },
     "local": {
-	"path": "/kat/data/tropomi/merged_no2-nrti",
-	"datafile": "S5P_NRTI_L3__NO2____{date}.nc",
-	"imagefile": "S5P_NRTI_L3__NO2____{date}.png"
+	"day": {
+	    "path": "/kat/data/tropomi/merged_no2-nrti",
+	    "datafile": "S5P_NRTI_L3_NO2_dailycomposite_{date}.nc",
+	    "imagefile": "S5P_NRTI_L3_NO2_dailycomposite_{date}.png"
+	}
     }
 }

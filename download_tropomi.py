@@ -55,12 +55,16 @@ def get_files_containing_pattern(s3, bucket_name, pattern, outpath):
     # Download files containing pattern
     logger.debug(f'Searching for pattern {pattern} in bucket {bucket_name}')
     for page in pages:
-        for key in page['Contents']:
-            if re.search(pattern, key['Key']):
-                logger.debug(f'Downloading file {key["Key"]}')
-                local_file = f"{outpath}/{key['Key']}"
-                s3.download_file(bucket_name, key['Key'], local_file)      
-            
+        try:
+            for key in page['Contents']:
+                if re.search(pattern, key['Key']):
+                    logger.debug(f'Downloading file {key["Key"]}')
+                    local_file = f"{outpath}/{key['Key']}"
+                    s3.download_file(bucket_name, key['Key'], local_file)      
+        except:
+            logger.debug(f'"Contents" keyword not found on S3 page, passing on to next page.')
+            pass
+
 
 def main():
 
@@ -78,12 +82,12 @@ def main():
         logger.error(f'Error while reading the configuration file {variable_config_file}')
         logger.error(e)
     
-    bucket_name = variable_config["s3"]["bucket_name"]
+    bucket_name = variable_config["s3"][options.timeperiod]["bucket_name"]
     time = ""
-    pattern = variable_config["s3"]["obj_name_start"].format(date = options.date, time = time)
+    pattern = variable_config["s3"][options.timeperiod]["obj_name_start"].format(date = options.date, time = time)
     
     # Search files including date and download
-    outpath = variable_config["local"]["path"]
+    outpath = variable_config["local"][options.timeperiod]["path"]
     get_files_containing_pattern(s3, bucket_name, pattern, outpath)
 
 
@@ -92,12 +96,16 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--var',
                         type = str,                                             
-                        default = 'no2-nrti',                               
+                        default = 'no2',                               
                         help = 'Tropomi variable file to download. Options: no2, so2, co, o3, no2-nrti, so2-nrti, co-nrti, o3-nrti')
     parser.add_argument('--date',
                         type = str,                                             
-                        default = '20221103',                               
+                        default = '20221101',                               
                         help = 'Date to download from S3.')
+    parser.add_argument('--timeperiod',
+                        type = str,
+                        default = 'day',
+                        help = 'Time period to be downloaded. Options: day|month')
     parser.add_argument('--loglevel',
                         default='info',
                         help='minimum severity of logged messages,\

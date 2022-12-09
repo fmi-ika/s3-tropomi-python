@@ -1,9 +1,13 @@
 {
     "s3": {
-	"bucket_name": "tropomi-no2-nrti",
-	"obj_name_start": "S5P_NRTI_L2__NO2____{date}T{time}"
+	"day": {
+	    "bucket_name": "tropomi-no2-nrti",
+	    "obj_name_start": "S5P_NRTI_L2__NO2____{date}T{time}"
+	}
     },
     "local": {
-	"path": "/kat/data/tropomi/S3_no2-nrti"
+	"day": {
+	    "path": "/kat/data/tropomi/S3_no2-nrti"
+	}
     }
 }

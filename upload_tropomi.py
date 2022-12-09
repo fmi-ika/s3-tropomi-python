@@ -5,6 +5,8 @@ import datetime
 import logging
 import time
 import os
+import gzip
+import shutil
 
 import boto3
 from botocore.exceptions import ClientError
@@ -78,12 +80,23 @@ def main():
         logger.error(f'Error while reading the configuration file {variable_config_file}')
         logger.error(e)
     
-    bucket_name = variable_config["s3"]["bucket_name"]
+    bucket_name = variable_config["s3"][options.timeperiod]["bucket_name"]
 
-    #Upload data and image files to S3
-    datafile = f'{variable_config["local"]["path"]}/{variable_config["local"]["datafile"].format(date = options.date)}' 
-    imagefile = f'{variable_config["local"]["path"]}/{variable_config["local"]["imagefile"].format(date = options.date)}'
-    upload_file(s3, datafile, bucket_name)
+    # Gzip data file before uploading
+    datafile = f'{variable_config["local"][options.timeperiod]["path"]}/{variable_config["local"][options.timeperiod]["datafile"].format(date = options.date)}'
+    datafile_gzip = f'{datafile}.gz'
+    logger.debug(f'Gzipping file {datafile}')
+    try:
+        with open(datafile, 'rb') as f_in:
+            with gzip.open(datafile_gzip, 'wb') as f_out:
+                shutil.copyfileobj(f_in, f_out)
+    except Exception as e:
+        logger.error(f'Error while gzipping file {datafile}')
+        logger.error(e)
+    
+    # Upload data and image files to S3
+    imagefile = f'{variable_config["local"][options.timeperiod]["path"]}/{variable_config["local"][options.timeperiod]["imagefile"].format(date = options.date)}'
+    upload_file(s3, datafile_gzip, bucket_name)
     upload_file(s3, imagefile, bucket_name)
 
 
@@ -98,6 +111,10 @@ if __name__ == '__main__':
                         type = str,                                             
                         default = '20221102',                               
                         help = 'Date to upload to S3.')
+    parser.add_argument('--timeperiod',
+                        type = str,
+                        default = 'day',
+                        help = 'Time period to upload. Options: day|month')
     parser.add_argument('--loglevel',
                         default='info',
                         help='minimum severity of logged messages,\
