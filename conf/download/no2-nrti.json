@@ -7,7 +7,7 @@
     },
     "local": {
 	"day": {
-	    "path": "/kat/data/tropomi/S3_no2-nrti"
+	    "path": "/data/tropomi/S3_no2-nrti"
 	}
     }
 }

@@ -1,9 +1,0 @@
-{
-    "s3": {
-	"bucket_name": "tropomi-no2",
-	"obj_name_start": "S5P_OFFL_L2__NO2____{date}T{time}"
-    },
-    "local": {
-	"path": "/kat/data/tropomi/S3_no2"
-    }
-}

@@ -1,9 +1,0 @@
-{
-    "s3": {
-	"bucket_name": "tropomi-co-nrti",
-	"obj_name_start": "S5P_NRTI_L2__CO_____{date}T{time}"
-    },
-    "local": {
-	"path": "/kat/data/tropomi/S3_co-nrti"
-    }
-}

@@ -4,6 +4,9 @@ import re
 import datetime
 import logging
 import time
+import gzip
+import shutil
+import os
 
 import boto3
 
@@ -60,7 +63,20 @@ def get_files_containing_pattern(s3, bucket_name, pattern, outpath):
                 if re.search(pattern, key['Key']):
                     logger.debug(f'Downloading file {key["Key"]}')
                     local_file = f"{outpath}/{key['Key']}"
-                    s3.download_file(bucket_name, key['Key'], local_file)      
+                    s3.download_file(bucket_name, key['Key'], local_file)
+
+                    # If file is gzipped, unzip
+                    if local_file.endswith('.gz'):
+                        unzipped_file = os.path.splitext(local_file)[0]
+                        logger.debug(f'Unpacking gzip file {local_file}')
+                        try:
+                            with gzip.open(local_file, 'rb') as f_in:
+                                with open(unzipped_file, 'wb') as f_out:
+                                    shutil.copyfileobj(f_in, f_out)
+                        except Exception as e:
+                            logger.error(f'Error while unpacking gzip file {local_file}')
+                            logger.error(e)
+                
         except:
             logger.debug(f'"Contents" keyword not found on S3 page, passing on to next page.')
             pass

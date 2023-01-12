@@ -6,7 +6,7 @@
     },
     "local": {
 	"day": {
-	    "path": "/kat/data/tropomi/merged_no2-nrti",
+	    "path": "/data/tropomi/merged_no2-nrti",
 	    "datafile": "S5P_NRTI_L3_NO2_dailycomposite_{date}.nc",
 	    "imagefile": "S5P_NRTI_L3_NO2_dailycomposite_{date}.png"
 	}
