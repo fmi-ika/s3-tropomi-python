@@ -73,8 +73,34 @@ def search_for_pattern(s3, bucket_name, pattern):
 
 
 def daterange(start_date, end_date):
+    """ Generator function for getting a list of dates
+
+    Keyword arguments:                                                                                
+    start_date -- First date in list
+    end_date -- Last date in list
+
+    Yield:
+    list of dates from first to last
+
+    """
     for n in range(int((end_date - start_date).days)):
         yield start_date + datetime.timedelta(n)
+
+        
+def daterange_reverse(start_date, end_date):
+    """ Generator function for getting a list of dates
+    in reverse order
+
+    Keyword arguments:                                                                                
+    start_date -- First date in list
+    end_date -- Last date in list
+
+    Yield:
+    list of dates from last to first
+
+    """
+    for n in range(int((end_date - start_date).days)):
+        yield end_date - datetime.timedelta(n)
 
 
 def main():
@@ -93,19 +119,22 @@ def main():
         logger.error(f'Error while reading the configuration file {variable_config_file}')
         logger.error(e)
 
-    start_date = datetime.date(2022, 1, 1)
-    end_date = datetime.date(2023, 1, 18)
-    for single_date in daterange(start_date, end_date):
+
+    start_date = datetime.datetime.strptime(options.start_date,'%Y%m%d').date()
+    end_date = datetime.datetime.strptime(options.end_date,'%Y%m%d').date()
+    
+    for single_date in daterange_reverse(start_date, end_date):
         date = single_date.strftime("%Y%m%d")
         
         bucket_name = variable_config["s3"][options.timeperiod]["bucket_name"]
         time = ""
-        pattern = variable_config["s3"][options.timeperiod]["obj_name_start"].format(date = options.date, time = time)
+        pattern = variable_config["s3"][options.timeperiod]["obj_name_start"].format(date = date, time = time)
     
         # Check if pattern is found in bucket
         if search_for_pattern(s3, bucket_name, pattern):
             print(f"Date {date} found in bucket {bucket_name}")
 
+    
 
 if __name__ == '__main__':                                                      
     #Parse commandline arguments                                                
@@ -114,16 +143,20 @@ if __name__ == '__main__':
                         type = str,                                             
                         default = 'no2-offl',                               
                         help = 'Tropomi variable file to download. Options: no2-offl, so2-offl, co-offl, o3-offl, no2-nrti, so2-nrti, co-nrti, o3-nrti')
-    parser.add_argument('--date',
-                        type = str,                                             
-                        default = '20221101',                               
-                        help = 'Date to download from S3.')
     parser.add_argument('--timeperiod',
                         type = str,
                         default = 'day',
-                        help = 'Time period to be downloaded. Options: day|month')
+                        help = 'Config timeperiod to use. Options: day|month')
+    parser.add_argument('--start_date',
+                        type = str,                          
+                        default = '20220101',                               
+                        help = 'First date to search in bucket.')
+    parser.add_argument('--end_date',
+                        type = str,                                             
+                        default = '20230118',                               
+                        help = 'Last date to search in bucket.')
     parser.add_argument('--loglevel',
-                        default='info',
+                        default='debug',
                         help='minimum severity of logged messages,\
                         options: debug, info, warning, error, critical, default=info')
     
