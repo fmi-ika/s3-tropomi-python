@@ -1,7 +1,7 @@
 import argparse
 import json
 import re
-import datetime #import date, timedelta
+import datetime
 import logging
 import time
 import gzip
@@ -72,36 +72,24 @@ def search_for_pattern(s3, bucket_name, pattern):
     return False
 
 
-def daterange(start_date, end_date):
+def daterange(start_date, end_date, reverse = False):
     """ Generator function for getting a list of dates
 
     Keyword arguments:                                                                                
     start_date -- First date in list
     end_date -- Last date in list
+    reverse -- if True, list dates from last to first
 
     Yield:
     list of dates from first to last
 
     """
     for n in range(int((end_date - start_date).days)):
-        yield start_date + datetime.timedelta(n)
-
-        
-def daterange_reverse(start_date, end_date):
-    """ Generator function for getting a list of dates
-    in reverse order
-
-    Keyword arguments:                                                                                
-    start_date -- First date in list
-    end_date -- Last date in list
-
-    Yield:
-    list of dates from last to first
-
-    """
-    for n in range(int((end_date - start_date).days)):
-        yield end_date - datetime.timedelta(n)
-
+        if not reverse:
+            yield start_date + datetime.timedelta(n)
+        else:
+            yield end_date - datetime.timedelta(n)
+            
 
 def main():
 
@@ -110,7 +98,7 @@ def main():
     s3 = create_s3_client(s3_config_file)
 
     # Read variable config
-    variable_config_file = f"conf/download/{options.var}.json"
+    variable_config_file = f"conf/search/{options.var}.json"
     logger.debug(f'Reading config file {variable_config_file}')
     try:
         with open(variable_config_file, "r") as jsonfile:
@@ -119,23 +107,21 @@ def main():
         logger.error(f'Error while reading the configuration file {variable_config_file}')
         logger.error(e)
 
-
     start_date = datetime.datetime.strptime(options.start_date,'%Y%m%d').date()
     end_date = datetime.datetime.strptime(options.end_date,'%Y%m%d').date()
+
+    with open(options.datelist_file, 'w') as outfile_datelist:
+        for single_date in daterange(start_date, end_date, reverse = True):
+            date = single_date.strftime("%Y%m%d")
+            bucket_name = variable_config[options.product]["bucket_name"]
+            pattern = variable_config[options.product]["obj_name_start"].format(date = date)
     
-    for single_date in daterange_reverse(start_date, end_date):
-        date = single_date.strftime("%Y%m%d")
-        
-        bucket_name = variable_config["s3"][options.timeperiod]["bucket_name"]
-        time = ""
-        pattern = variable_config["s3"][options.timeperiod]["obj_name_start"].format(date = date, time = time)
-    
-        # Check if pattern is found in bucket
-        if search_for_pattern(s3, bucket_name, pattern):
-            print(f"Date {date} found in bucket {bucket_name}")
+            # Check if pattern is found in bucket and write found dates in file
+            if search_for_pattern(s3, bucket_name, pattern):
+                print(f"{date}")
+                outfile_datelist.write(f"{date}\n")
 
     
-
 if __name__ == '__main__':                                                      
     #Parse commandline arguments                                                
     parser = argparse.ArgumentParser()
@@ -143,10 +129,10 @@ if __name__ == '__main__':
                         type = str,                                             
                         default = 'no2-offl',                               
                         help = 'Tropomi variable file to download. Options: no2-offl, so2-offl, co-offl, o3-offl, no2-nrti, so2-nrti, co-nrti, o3-nrti')
-    parser.add_argument('--timeperiod',
+    parser.add_argument('--product',
                         type = str,
-                        default = 'day',
-                        help = 'Config timeperiod to use. Options: day|month')
+                        default = 'l2',
+                        help = 'Product to search. Options: l2|l3_day|l3_month')
     parser.add_argument('--start_date',
                         type = str,                          
                         default = '20220101',                               
@@ -155,6 +141,10 @@ if __name__ == '__main__':
                         type = str,                                             
                         default = '20230118',                               
                         help = 'Last date to search in bucket.')
+    parser.add_argument('--datelist_file',
+                        type = str,                                             
+                        default = 's3_data_newest_dates.txt',                               
+                        help = 'Outfile for printed list of days.')    
     parser.add_argument('--loglevel',
                         default='debug',
                         help='minimum severity of logged messages,\

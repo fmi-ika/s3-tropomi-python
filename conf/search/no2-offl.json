@@ -1,0 +1,15 @@
+{   
+    "l2": {
+	"bucket_name": "tropomi-no2",
+	"obj_name_start": "S5P_OFFL_L2__NO2____{date}"
+    },
+    "l3_day": {
+	"bucket_name": "tropomi-no2-l3",
+	"obj_name_start": "S5P_OFFL_L3_NO2_dailycomposite_{date}"
+    },
+    "l3_month": {
+	"bucket_name": "tropomi-no2-l3",
+	"obj_name_start": "S5P_OFFL_L3_NO2_monthlycomposite_{date}"
+    }
+}
+
