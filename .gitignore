@@ -6,4 +6,5 @@ conf/tropomi_s3_rw.json~
 conf/tropomi_s3_ro.json
 conf/tropomi_s3_ro.json~
 
+s3_data_newest_dates.txt
 
