@@ -1,0 +1,20 @@
+{
+    "s3": {
+	"day": {
+	    "bucket_name": "tropomi-o3",
+	    "obj_name_start": "S5P_OFFL_L2__O3_____{date}T{time}"
+	},
+	"month": {
+	    "bucket_name": "tropomi-o3-l3",
+	    "obj_name_start": "S5P_OFFL_L3_O3_dailycomposite_{date}"
+	}
+    },
+    "local": {
+	"day": {
+	    "path": "/data/tropomi/S3_o3-offl"
+	},
+	"month": {
+	    "path": "/data/tropomi/S3_o3-offl"
+	}
+    }
+}
