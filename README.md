@@ -56,7 +56,7 @@ Upload configurations are located under `/conf/upload`. Configuration .json file
 
 
 ### Running the search for dates in bucket code
-Run the code: `$ python search_for_dates_in_bucket.py --var="no2-nrti" --product="l3_day" --startdate="20230101" --enddate="20230131" --datelist_file="test.lst"
+Run the code: `$ python search_for_dates_in_bucket.py --var="no2-nrti" --product="l3_day" --startdate="20230101" --enddate="20230131" --datelist_file="test.lst"`
 
 Input parameters are:
 - `var`: variable name, which is used to find correct configuration .json file
