@@ -82,21 +82,23 @@ def main():
     
     bucket_name = variable_config["s3"][options.timeperiod]["bucket_name"]
 
-    # Gzip data file before uploading
-    datafile = f'{variable_config["local"][options.timeperiod]["path"]}/{variable_config["local"][options.timeperiod]["datafile"].format(date = options.date)}'
-    datafile_gzip = f'{datafile}.gz'
-    logger.debug(f'Gzipping file {datafile}')
-    try:
-        with open(datafile, 'rb') as f_in:
-            with gzip.open(datafile_gzip, 'wb') as f_out:
-                shutil.copyfileobj(f_in, f_out)
-    except Exception as e:
-        logger.error(f'Error while gzipping file {datafile}')
-        logger.error(e)
+    if variable_config["local"][options.timeperiod]["datafile"]:
+        # Gzip data file before uploading
+        datafile = f'{variable_config["local"][options.timeperiod]["path"]}/{variable_config["local"][options.timeperiod]["datafile"].format(date = options.date)}'
+        datafile_gzip = f'{datafile}.gz'
+        logger.debug(f'Gzipping file {datafile}')
+        try:
+            with open(datafile, 'rb') as f_in:
+                with gzip.open(datafile_gzip, 'wb') as f_out:
+                    shutil.copyfileobj(f_in, f_out)
+        except Exception as e:
+            logger.error(f'Error while gzipping file {datafile}')
+            logger.error(e)
+        # Upload data file to S3
+        upload_file(s3, datafile_gzip, bucket_name)
     
-    # Upload data and image files to S3
+    # Upload image file to S3
     imagefile = f'{variable_config["local"][options.timeperiod]["path"]}/{variable_config["local"][options.timeperiod]["imagefile"].format(date = options.date)}'
-    upload_file(s3, datafile_gzip, bucket_name)
     upload_file(s3, imagefile, bucket_name)
 
 
