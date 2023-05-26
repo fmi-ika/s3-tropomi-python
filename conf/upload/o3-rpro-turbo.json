@@ -1,0 +1,23 @@
+{
+    "s3": {
+	"day": {
+	    "bucket_name": "tropomi-o3-l3"
+	},
+	"month": {
+	    "bucket_name": "tropomi-o3-l3"
+	}
+    },
+    "local": {
+	"day": {
+	    "path": "/data/tropomi/merged_o3-offl",
+	    "datafile": "",
+	    "imagefile": "S5P_RPRO_L3_O3_dailycomposite_turbo_{date}.png"
+	},
+	"month": {
+            "path": "/data/tropomi/merged_o3-offl",
+            "datafile": "",
+            "imagefile": "S5P_RPRO_L3_O3_monthlycomposite_turbo_{date}.png"
+        }
+
+    }
+}
