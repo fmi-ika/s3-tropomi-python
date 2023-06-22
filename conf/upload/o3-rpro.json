@@ -10,13 +10,13 @@
     "local": {
 	"day": {
 	    "path": "/data/tropomi/merged_o3-offl",
-	    "datafile": "S5P_RPRO_L3_O3_dailycomposite_{date}.nc",
-	    "imagefile": "S5P_RPRO_L3_O3_dailycomposite_{date}.png"
+	    "datafile": "S5P_OFFL_L3_O3_dailycomposite_{date}.nc",
+	    "imagefile": "S5P_OFFL_L3_O3_dailycomposite_{date}.png"
 	},
 	"month": {
             "path": "/data/tropomi/merged_o3-offl",
-            "datafile": "S5P_RPRO_L3_O3_monthlycomposite_{date}.nc",
-            "imagefile": "S5P_RPRO_L3_O3_monthlycomposite_{date}.png"
+            "datafile": "S5P_OFFL_L3_O3_monthlycomposite_{date}.nc",
+            "imagefile": "S5P_OFFL_L3_O3_monthlycomposite_{date}.png"
         }
 
     }

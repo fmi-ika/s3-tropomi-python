@@ -6,7 +6,7 @@
 	},
 	"month": {
 	    "bucket_name": "tropomi-o3-l3",
-	    "obj_name_start": "S5P_RPRO_L3_O3_dailycomposite_{date}"
+	    "obj_name_start": "S5P_OFFL_L3_O3_dailycomposite_{date}"
 	}
     },
     "local": {

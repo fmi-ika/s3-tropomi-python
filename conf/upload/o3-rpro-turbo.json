@@ -11,12 +11,12 @@
 	"day": {
 	    "path": "/data/tropomi/merged_o3-offl",
 	    "datafile": "",
-	    "imagefile": "S5P_RPRO_L3_O3_dailycomposite_turbo_{date}.png"
+	    "imagefile": "S5P_OFFL_L3_O3_dailycomposite_turbo_{date}.png"
 	},
 	"month": {
             "path": "/data/tropomi/merged_o3-offl",
             "datafile": "",
-            "imagefile": "S5P_RPRO_L3_O3_monthlycomposite_turbo_{date}.png"
+            "imagefile": "S5P_OFFL_L3_O3_monthlycomposite_turbo_{date}.png"
         }
 
     }

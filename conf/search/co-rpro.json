@@ -1,0 +1,15 @@
+{   
+    "l2": {
+	"bucket_name": "tropomi-co",
+	"obj_name_start": "S5P_RPRO_L2__CO_____{date}"
+    },
+    "l3_day": {
+	"bucket_name": "tropomi-co-l3",
+	"obj_name_start": "S5P_OFFL_L3_CO_dailycomposite_{date}"
+    },
+    "l3_month": {
+	"bucket_name": "tropomi-co-l3",
+	"obj_name_start": "S5P_OFFL_L3_CO_monthlycomposite_{date}"
+    }
+}
+
