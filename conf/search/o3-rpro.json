@@ -1,7 +1,7 @@
 {   
     "l2": {
 	"bucket_name": "tropomi-o3",
-	"obj_name_start": "S5P_RPRO_L2__O3____{date}"
+	"obj_name_start": "S5P_RPRO_L2__O3_____{date}"
     },
     "l3_day": {
 	"bucket_name": "tropomi-o3-l3",
