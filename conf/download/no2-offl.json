@@ -7,6 +7,10 @@
 	"month": {
 	    "bucket_name": "tropomi-no2-l3",
 	    "obj_name_start": "S5P_OFFL_L3_NO2_dailycomposite_{date}"
+	},
+	"year": {
+	    "bucket_name": "tropomi-no2-l3",
+	    "obj_name_start": "S5P_OFFL_L3_NO2_monthlycomposite_{date}"
 	}
     },
     "local": {
@@ -14,6 +18,9 @@
 	    "path": "/data/tropomi/S3_no2-offl"
 	},
 	"month": {
+	    "path": "/data/tropomi/S3_no2-offl"
+	},
+	"year": {
 	    "path": "/data/tropomi/S3_no2-offl"
 	}
     }

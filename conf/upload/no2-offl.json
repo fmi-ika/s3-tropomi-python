@@ -5,6 +5,9 @@
 	},
 	"month": {
 	    "bucket_name": "tropomi-no2-l3"
+	},
+	"year": {
+	    "bucket_name": "tropomi-no2-l3"
 	}
     },
     "local": {
@@ -17,6 +20,11 @@
             "path": "/data/tropomi/merged_no2-offl",
             "datafile": "S5P_OFFL_L3_NO2_monthlycomposite_{date}.nc",
             "imagefile": "S5P_OFFL_L3_NO2_monthlycomposite_{date}.png"
+        },
+	"year": {
+            "path": "/data/tropomi/merged_no2-offl",
+            "datafile": "S5P_OFFL_L3_NO2_yearlycomposite_{date}.nc",
+            "imagefile": "S5P_OFFL_L3_NO2_yearlycomposite_{date}.png"
         }
 
     }

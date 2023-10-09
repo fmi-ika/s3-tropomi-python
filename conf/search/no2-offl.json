@@ -11,5 +11,9 @@
 	"bucket_name": "tropomi-no2-l3",
 	"obj_name_start": "S5P_OFFL_L3_NO2_monthlycomposite_{date}"
     }
+    "l3_year": {
+	"bucket_name": "tropomi-no2-l3",
+	"obj_name_start": "S5P_OFFL_L3_NO2_yearlycomposite_{date}"
+    }
 }
 
