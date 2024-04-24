@@ -2,7 +2,7 @@
     "s3": {
 	"day": {
 	    "bucket_name": "tropomi-so2",
-	    "obj_name_start": "S5P_OFFL_L2__SO2____{date}T{time}"
+	    "obj_name_start": "S5P_PAL__L2__SO2CBR_{date}T{time}"
 	},
 	"month": {
 	    "bucket_name": "tropomi-so2-l3",

@@ -1,0 +1,30 @@
+{
+    "s3": {
+	"day": {
+	    "bucket_name": "tropomi-aai-l3"
+	},
+	"month": {
+	    "bucket_name": "tropomi-aai-l3"
+	},
+	"year": {
+	    "bucket_name": "tropomi-aai-l3"
+	}
+    },
+    "local": {
+	"day": {
+	    "path": "/data/tropomi/merged_aai-offl",
+	    "datafile": "S5P_OFFL_L3_AAI_dailycomposite_{date}.nc",
+	    "imagefile": "S5P_OFFL_L3_AAI_dailycomposite_{date}.png"
+	},
+	"month": {
+            "path": "/data/tropomi/merged_aai-offl",
+            "datafile": "S5P_OFFL_L3_AAI_monthlycomposite_{date}.nc",
+            "imagefile": "S5P_OFFL_L3_AAI_monthlycomposite_{date}.png"
+        },
+	"year": {
+            "path": "/data/tropomi/merged_aai-offl",
+            "datafile": "S5P_OFFL_L3_AAI_yearlycomposite_{date}.nc",
+            "imagefile": "S5P_OFFL_L3_AAI_yearlycomposite_{date}.png"
+        }
+    }
+}

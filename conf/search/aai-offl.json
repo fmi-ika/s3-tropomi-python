@@ -1,0 +1,19 @@
+{   
+    "l2": {
+	"bucket_name": "tropomi-aai",
+	"obj_name_start": "S5P_OFFL_L2__AER_AI_{date}"
+    },
+    "l3_day": {
+	"bucket_name": "tropomi-aai-l3",
+	"obj_name_start": "S5P_OFFL_L3_AAI_dailycomposite_{date}"
+    },
+    "l3_month": {
+	"bucket_name": "tropomi-aai-l3",
+	"obj_name_start": "S5P_OFFL_L3_AAI_monthlycomposite_{date}"
+    },
+    "l3_year": {
+	"bucket_name": "tropomi-aai-l3",
+	"obj_name_start": "S5P_OFFL_L3_AAI_yearlycomposite_{date}"
+    }
+}
+
