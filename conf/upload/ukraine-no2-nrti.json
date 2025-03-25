@@ -1,0 +1,14 @@
+{
+    "s3": {
+	"day": {
+	    "bucket_name": "ukraine-tropomi-no2-nrti-l3"
+	}
+    },
+    "local": {
+	"day": {
+	    "path": "/data/tropomi/merged_no2-nrti",
+	    "datafile": "S5P_NRTI_L3_NO2_dailycomposite_ukraine_{date}.nc",
+	    "imagefile": "S5P_NRTI_L3_NO2_dailycomposite_ukraine_{date}.png"
+	}
+    }
+}

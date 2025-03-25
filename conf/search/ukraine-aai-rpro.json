@@ -1,0 +1,19 @@
+{   
+    "l2": {
+	"bucket_name": "tropomi-aai",
+	"obj_name_start": "S5P_RPRO_L2__AER_AI_{date}"
+    },
+    "l3_day": {
+	"bucket_name": "ukraine-tropomi-aai-l3",
+	"obj_name_start": "S5P_OFFL_L3_AAI_dailycomposite_ukraine_{date}"
+    },
+    "l3_month": {
+	"bucket_name": "ukraine-tropomi-aai-l3",
+	"obj_name_start": "S5P_OFFL_L3_AAI_monthlycomposite_ukraine_{date}"
+    },
+    "l3_year": {
+	"bucket_name": "ukraine-tropomi-aai-l3",
+	"obj_name_start": "S5P_OFFL_L3_AAI_yearlycomposite_ukraine_{date}"
+    }
+}
+

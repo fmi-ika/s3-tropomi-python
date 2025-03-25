@@ -1,0 +1,13 @@
+{
+    "s3": {
+	"day": {
+	    "bucket_name": "tropomi-aai-nrti",
+	    "obj_name_start": "S5P_NRTI_L2__AER_AI_{date}T{time}"
+	}
+    },
+    "local": {
+	"day": {
+	    "path": "/data/tropomi/S3_aai-nrti"
+	}
+    }
+}

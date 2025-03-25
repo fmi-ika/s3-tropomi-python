@@ -1,0 +1,19 @@
+{   
+    "l2": {
+	"bucket_name": "tropomi-co",
+	"obj_name_start": "S5P_RPRO_L2__CO_____{date}"
+    },
+    "l3_day": {
+	"bucket_name": "ukraine-tropomi-co-l3",
+	"obj_name_start": "S5P_OFFL_L3_CO_dailycomposite_ukraine_{date}"
+    },
+    "l3_month": {
+	"bucket_name": "ukraine-tropomi-co-l3",
+	"obj_name_start": "S5P_OFFL_L3_CO_monthlycomposite_ukraine_{date}"
+    },
+    "l3_year": {
+	"bucket_name": "ukraine-tropomi-co-l3",
+	"obj_name_start": "S5P_OFFL_L3_CO_yearlycomposite_ukraine_{date}"
+    }
+}
+

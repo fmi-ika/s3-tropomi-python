@@ -1,0 +1,30 @@
+{
+    "s3": {
+	"day": {
+	    "bucket_name": "ukraine-tropomi-no2-l3"
+	},
+	"month": {
+	    "bucket_name": "ukraine-tropomi-no2-l3"
+	},
+	"year": {
+	    "bucket_name": "ukraine-tropomi-no2-l3"
+	}
+    },
+    "local": {
+	"day": {
+	    "path": "/data/tropomi/merged_no2-offl",
+	    "datafile": "S5P_OFFL_L3_NO2_dailycomposite_ukraine_{date}.nc",
+	    "imagefile": "S5P_OFFL_L3_NO2_dailycomposite_ukraine_{date}.png"
+	},
+	"month": {
+            "path": "/data/tropomi/merged_no2-offl",
+            "datafile": "S5P_OFFL_L3_NO2_monthlycomposite_ukraine_{date}.nc",
+            "imagefile": "S5P_OFFL_L3_NO2_monthlycomposite_ukraine_{date}.png"
+        },
+	"year": {
+            "path": "/data/tropomi/merged_no2-offl",
+            "datafile": "S5P_OFFL_L3_NO2_yearlycomposite_ukraine_{date}.nc",
+            "imagefile": "S5P_OFFL_L3_NO2_yearlycomposite_ukraine_{date}.png"
+        }
+    }
+}

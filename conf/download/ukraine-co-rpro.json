@@ -1,0 +1,27 @@
+{
+    "s3": {
+	"day": {
+	    "bucket_name": "tropomi-co",
+	    "obj_name_start": "S5P_RPRO_L2__CO_____{date}T{time}"
+	},
+	"month": {
+	    "bucket_name": "tropomi-co-l3",
+	    "obj_name_start": "S5P_OFFL_L3_CO_dailycomposite_{date}"
+	},
+	"year": {
+	    "bucket_name": "tropomi-co-l3",
+	    "obj_name_start": "S5P_OFFL_L3_CO_monthlycomposite_{date}"
+	}
+    },
+    "local": {
+	"day": {
+	    "path": "/data/tropomi/S3_co-offl"
+	},
+	"month": {
+	    "path": "/data/tropomi/S3_co-offl"
+	},
+	"year": {
+	    "path": "/data/tropomi/S3_co-offl"
+	}
+    }
+}
