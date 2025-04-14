@@ -5,11 +5,11 @@
 	    "obj_name_start": "S5P_OFFL_L2__AER_AI_{date}T{time}"
 	},
 	"month": {
-	    "bucket_name": "tropomi-aai-l3",
+	    "bucket_name": "ukraine-tropomi-aai-l3",
 	    "obj_name_start": "S5P_OFFL_L3_AAI_dailycomposite_ukraine_{date}"
 	},
 	"year": {
-	    "bucket_name": "tropomi-aai-l3",
+	    "bucket_name": "ukraine-tropomi-aai-l3",
 	    "obj_name_start": "S5P_OFFL_L3_AAI_monthlycomposite_ukraine_{date}"
 	}
     },

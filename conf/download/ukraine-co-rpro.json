@@ -5,11 +5,11 @@
 	    "obj_name_start": "S5P_RPRO_L2__CO_____{date}T{time}"
 	},
 	"month": {
-	    "bucket_name": "tropomi-co-l3",
+	    "bucket_name": "ukraine-tropomi-co-l3",
 	    "obj_name_start": "S5P_OFFL_L3_CO_dailycomposite_ukraine_{date}"
 	},
 	"year": {
-	    "bucket_name": "tropomi-co-l3",
+	    "bucket_name": "ukraine-tropomi-co-l3",
 	    "obj_name_start": "S5P_OFFL_L3_CO_monthlycomposite_ukraine_{date}"
 	}
     },

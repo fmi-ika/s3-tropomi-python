@@ -5,11 +5,11 @@
 	    "obj_name_start": "S5P_OFFL_L2__NO2____{date}T{time}"
 	},
 	"month": {
-	    "bucket_name": "tropomi-no2-l3",
+	    "bucket_name": "ukraine-tropomi-no2-l3",
 	    "obj_name_start": "S5P_OFFL_L3_NO2_dailycomposite_ukraine_{date}"
 	},
 	"year": {
-	    "bucket_name": "tropomi-no2-l3",
+	    "bucket_name": "ukraine-tropomi-no2-l3",
 	    "obj_name_start": "S5P_OFFL_L3_NO2_monthlycomposite_ukraine_{date}"
 	}
     },
