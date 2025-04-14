@@ -6,11 +6,11 @@
 	},
 	"month": {
 	    "bucket_name": "tropomi-aai-l3",
-	    "obj_name_start": "S5P_OFFL_L3_AAI_dailycomposite_{date}"
+	    "obj_name_start": "S5P_OFFL_L3_AAI_dailycomposite_ukraine_{date}"
 	},
 	"year": {
 	    "bucket_name": "tropomi-aai-l3",
-	    "obj_name_start": "S5P_OFFL_L3_AAI_monthlycomposite_{date}"
+	    "obj_name_start": "S5P_OFFL_L3_AAI_monthlycomposite_ukraine_{date}"
 	}
     },
     "local": {
