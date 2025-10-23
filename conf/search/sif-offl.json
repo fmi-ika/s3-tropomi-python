@@ -1,0 +1,19 @@
+{   
+    "l2": {
+	"bucket_name": "tropomi-sif",
+	"obj_name_start": "S5P_PAL__L2__SIF____{date}"
+    },
+    "l3_day": {
+	"bucket_name": "tropomi-sif-l3",
+	"obj_name_start": "S5P_OFFL_L3_SIF_dailycomposite_{date}"
+    },
+    "l3_month": {
+	"bucket_name": "tropomi-sif-l3",
+	"obj_name_start": "S5P_OFFL_L3_SIF_monthlycomposite_{date}"
+    },
+    "l3_year": {
+	"bucket_name": "tropomi-sif-l3",
+	"obj_name_start": "S5P_OFFL_L3_SIF_yearlycomposite_{date}"
+    }
+}
+
